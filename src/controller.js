@@ -1,15 +1,17 @@
-console.log('Connected!');
+import * as model from './model.js';
+import calculatorView from './views/calculatorView.js';
 
+// console.log('Connected!');
 
-const numContainer = document.querySelectorAll('.numbers div');
-const numbers = new Set(numContainer);
-const operatorsContainer = document.querySelectorAll('.operators div');
-const operators = [...operatorsContainer];
+export const controller = function () {
+	// reset state
+	model.initialState();
 
-// numbers.forEach(num => num.addEventListener('click', function(e){
-//     console.log(e.target.textContent)
-// }));
+	//
+};
 
-class App {
-    
-}
+const init = function () {
+	calculatorView.clickListener();
+};
+
+init();
