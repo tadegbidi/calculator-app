@@ -11,7 +11,7 @@ export const controller = function () {
 };
 
 const init = function () {
-	calculatorView.clickListener();
+	calculatorView.render();
 };
 
 init();
