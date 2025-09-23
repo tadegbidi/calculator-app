@@ -11,14 +11,16 @@ class CalculatorView {
 	render() {
 		this._numbers.forEach(el => {
 			if (el.textContent === 'c') {
-				el.addEventListener('click', e => {
+				el.addEventListener('click', () => {
 					this._clear();
 				});
 			}
 
-			el.addEventListener('click', e => {
-				this._setNumbers(e.target.textContent);
-			});
+			if (el.textContent !== 'c') {
+				el.addEventListener('click', e => {
+					this._setNumbers(e.target.textContent);
+				});
+			}
 		});
 
 		this._operators.forEach(el =>
@@ -32,6 +34,7 @@ class CalculatorView {
 		// console.log(this._display);
 		this._currentInput = '';
 		this._previousInput = '';
+		this._currentOperation = '';
 		this._display.textContent = 0;
 	}
 
@@ -45,10 +48,17 @@ class CalculatorView {
 		if (this._previousInput !== '') {
 			this._calculate();
 		}
-		this._currentOperation = operation;
-		this._previousInput = this._currentInput;
-		this._currentInput = '';
-		this._display.textContent = `${this._previousInput} ${this._currentOperation}`;
+
+		
+		if (operation !== '=') {
+			this._previousInput = this._currentInput;
+			this._currentInput = '';
+			this._currentOperation = operation;
+			this._display.textContent = `${this._previousInput} ${this._currentOperation}`;
+		}
+		if (operation === '=') {
+			this._calculate();
+		}
 	}
 
 	_calculate() {
