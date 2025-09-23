@@ -8,30 +8,11 @@ class CalculatorView {
 	_currentOperation = '';
 	_currentInput = '';
 
-	render() {
-		this._numbers.forEach(el => {
-			if (el.textContent === 'c') {
-				el.addEventListener('click', () => {
-					this._clear();
-				});
-			}
-
-			if (el.textContent !== 'c') {
-				el.addEventListener('click', e => {
-					this._setNumbers(e.target.textContent);
-				});
-			}
-		});
-
-		this._operators.forEach(el =>
-			el.addEventListener('click', e => {
-				this._setOperation(e.target.textContent);
-			})
-		);
+	_clickingAction(el, fn) {
+		el.addEventListener('click', fn);
 	}
 
 	_clear() {
-		// console.log(this._display);
 		this._currentInput = '';
 		this._previousInput = '';
 		this._currentOperation = '';
@@ -49,7 +30,6 @@ class CalculatorView {
 			this._calculate();
 		}
 
-		
 		if (operation !== '=') {
 			this._previousInput = this._currentInput;
 			this._currentInput = '';
@@ -88,6 +68,26 @@ class CalculatorView {
 		this._currentOperation = '';
 		this._previousInput = '';
 		this._display.textContent = this._currentInput;
+	}
+
+	render() {
+		this._numbers.forEach(el => {
+			if (el.textContent === 'c')
+				this._clickingAction(el, () => {
+					this._clear();
+				});
+
+			if (el.textContent !== 'c')
+				this._clickingAction(el, e => {
+					this._setNumbers(e.target.textContent);
+				});
+		});
+
+		this._operators.forEach(el =>
+			this._clickingAction(el, e => {
+				this._setOperation(e.target.textContent);
+			})
+		);
 	}
 }
 
