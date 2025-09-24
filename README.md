@@ -1,3 +1,3 @@
 # Calulator Project
 
-Basic Calculator application using MVC method.
+Basic calculator application using Javascript MVC method.
