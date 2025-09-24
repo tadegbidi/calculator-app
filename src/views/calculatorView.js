@@ -8,10 +8,6 @@ class CalculatorView {
 	_currentOperation = '';
 	_currentInput = '';
 
-	_clickingAction(el, fn) {
-		el.addEventListener('click', fn);
-	}
-
 	_clear() {
 		this._currentInput = '';
 		this._previousInput = '';
@@ -68,6 +64,10 @@ class CalculatorView {
 		this._currentOperation = '';
 		this._previousInput = '';
 		this._display.textContent = this._currentInput;
+	}
+
+	_clickingAction(el, fn) {
+		el.addEventListener('click', fn);
 	}
 
 	render() {
