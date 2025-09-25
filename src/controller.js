@@ -1,14 +1,8 @@
 import * as model from './model.js';
 import calculatorView from './views/calculatorView.js';
 
-// console.log('Connected!');
-
-// const { previousInput, currentInput, currentOperation } = model.state;
 
 let displayer;
-
-// model.state.currentInput = 1;
-// console.log(model.state.currentInput);
 
 export const controller = function () {
 	// reset state
@@ -70,6 +64,14 @@ const calculate = function () {
 		default:
 			return;
 	}
+
+	const newOperation = {
+		x: prev,
+		y: current,
+		operation: model.state.settings.currentOperation,
+		result: result,
+	};
+	model.state.operations.push(newOperation);
 
 	model.state.settings.currentInput = result.toString();
 	model.state.settings.currentOperation = '';
