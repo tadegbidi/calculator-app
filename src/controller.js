@@ -26,7 +26,6 @@ const setOperation = function (operation) {
 	if (model.state.settings.currentInput === '') return;
 	if (model.state.settings.previousInput !== '') {
 		displayer = calculate();
-		return displayer;
 	}
 
 	if (operation !== '=') {
@@ -34,8 +33,8 @@ const setOperation = function (operation) {
 		model.state.settings.currentInput = '';
 		model.state.settings.currentOperation = operation;
 		displayer = `${model.state.settings.previousInput} ${model.state.settings.currentOperation}`;
-		return displayer;
 	}
+	return displayer;
 };
 
 const calculate = function () {
@@ -72,6 +71,7 @@ const calculate = function () {
 		result: result,
 	};
 	model.state.operations.push(newOperation);
+	console.log(model.state.operations);
 
 	model.state.settings.currentInput = result.toString();
 	model.state.settings.currentOperation = '';
