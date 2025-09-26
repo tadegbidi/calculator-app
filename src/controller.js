@@ -17,13 +17,21 @@ const clear = function () {
 };
 
 const setNumbers = function (num) {
-	model.state.settings.currentInput += num;
+	// return num = 0 because currentInput is already set to 0
+	if (num === 0) return;
+
+	// check currentInput value
+	model.state.settings.currentInput === 0
+		? (model.state.settings.currentInput = num)
+		: (model.state.settings.currentInput += num);
+
+	// return what should be displayed
 	displayer = `${model.state.settings.previousInput} ${model.state.settings.currentOperation} ${model.state.settings.currentInput}`;
 	return displayer;
 };
 
 const setOperation = function (operation) {
-	if (model.state.settings.currentInput === '') return;
+	// if (model.state.settings.currentInput === '') return;
 	if (model.state.settings.previousInput !== '') {
 		displayer = calculate();
 	}
@@ -35,6 +43,16 @@ const setOperation = function (operation) {
 		displayer = `${model.state.settings.previousInput} ${model.state.settings.currentOperation}`;
 	}
 	return displayer;
+};
+
+const saveOperations = function (x, y, operation, result) {
+	const newOperation = {
+		x,
+		y,
+		operation,
+		result,
+	};
+	model.state.operations.push(newOperation);
 };
 
 const calculate = function () {
@@ -64,13 +82,7 @@ const calculate = function () {
 			return;
 	}
 
-	const newOperation = {
-		x: prev,
-		y: current,
-		operation: model.state.settings.currentOperation,
-		result: result,
-	};
-	model.state.operations.push(newOperation);
+	saveOperations(prev, current, model.state.settings.currentOperation, result);
 	console.log(model.state.operations);
 
 	model.state.settings.currentInput = result.toString();
@@ -80,6 +92,7 @@ const calculate = function () {
 };
 
 const init = function () {
+	calculatorView.start();
 	calculatorView.render(clear, setNumbers, setOperation);
 };
 
