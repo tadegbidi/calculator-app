@@ -91,6 +91,14 @@ body {
     width: 20%;
     padding: 1em 2em;
     height: 100vh;
+    overflow-y: scroll;
+
+    h2 {
+        text-align: center;
+        font-weight: 400;
+        color: #000000e8;
+        margin-bottom: 5px;
+    }
 
     .log {
         border: solid 1px #0000003c;
@@ -102,6 +110,12 @@ body {
         display: flex;
         justify-content: center;
         margin-bottom: 5px;
-       &:last-child { margin-bottom: 0; }
+
+       &:first-of-type {
+            background-color: rgb(255, 201, 83);
+        }
+        &:last-of-type { 
+            margin-bottom: 0; 
+        }
     }
 }

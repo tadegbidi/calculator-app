@@ -1,14 +1,8 @@
 import * as model from './model.js';
 import calculatorView from './views/calculatorView.js';
-
+import loggerView from './views/loggerView.js';
 
 let displayer;
-
-export const controller = function () {
-	// reset state
-	// model.initialState();
-	//
-};
 
 const clear = function () {
 	model.initialState();
@@ -32,7 +26,8 @@ const setNumbers = function (num) {
 };
 
 const setOperation = function (operation) {
-	// if (model.state.settings.currentInput === '') return;
+	if (model.state.settings.currentInput === '') return;
+
 	if (model.state.settings.previousInput !== '') {
 		displayer = calculate();
 	}
@@ -84,7 +79,8 @@ const calculate = function () {
 	}
 
 	saveOperations(prev, current, model.state.settings.currentOperation, result);
-	console.log(model.state.operations);
+	// console.log(model.state.operations);
+	loggerView.start(model.state.operations);
 
 	model.state.settings.currentInput = result.toString();
 	model.state.settings.currentOperation = '';
@@ -95,6 +91,7 @@ const calculate = function () {
 const init = function () {
 	calculatorView.start();
 	calculatorView.render(clear, setNumbers, setOperation);
+	loggerView.start(model.state.operations);
 };
 
 init();
