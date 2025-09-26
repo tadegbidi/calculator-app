@@ -81,3 +81,27 @@ body {
         }
     }
 }
+
+.logger {
+    position: fixed;
+    bottom: 0;
+    right: 10%;
+    background-color: rgba(255, 255, 255, 0.35);
+    color: black;
+    width: 20%;
+    padding: 1em 2em;
+    height: 100vh;
+
+    .log {
+        border: solid 1px #0000003c;
+        background-color: #ffffff;
+        border-radius: 5px;
+        font-size: 18px;
+        width: 100%;
+        padding: 1em;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+       &:last-child { margin-bottom: 0; }
+    }
+}
