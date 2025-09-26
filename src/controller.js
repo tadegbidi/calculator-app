@@ -21,7 +21,8 @@ const setNumbers = function (num) {
 	if (num === 0) return;
 
 	// check currentInput value
-	model.state.settings.currentInput === 0
+	model.state.settings.currentInput === 0 ||
+	model.state.settings.currentInput === '0'
 		? (model.state.settings.currentInput = num)
 		: (model.state.settings.currentInput += num);
 
