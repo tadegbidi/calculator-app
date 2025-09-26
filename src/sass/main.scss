@@ -4,123 +4,230 @@
 
 body {
     background-color: #eee;
+    margin: 0;
 }
 
-.container {
-    border: solid #999 1px;
-    border-radius: 10px;
-    width: 700px;
+#app {
+        @media screen and (max-width: 700px) {
+            padding: 5%;
+        }
+}
+
+main {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5%;
+    width: 1500px;
     max-width: 100%;
+    padding-bottom: 5%;
 
-    .head{
-        .display {
-            border: solid #999 1px;
-            border-radius: 5px;
-            height: 2em;
-            font-size: 2em;
-            text-align: right;
-            margin: 1em;
-            padding: 10px;
-            background-color: #fff;
-        }
+    @media screen and (max-width: 1600px) {
+        width: 1200px;        
+        gap: 2%;        
     }
 
-    .body{
-        display: flex;
-        margin: 2em;
+    @media screen and (max-width: 1300px) {
+        width: 960px;        
+    }
+
+    @media screen and (max-width: 1000px) {
+        width: 768px;
+    }
+
+    @media screen and (max-width: 850px) {
+        width: 640px; 
+        flex-direction: column-reverse;
+        gap: 20px;       
+    }
+
+    @media screen and (max-width: 700px) {
+        width: 480px;     
+    }
+
+    @media screen and (max-width: 540px) {
+        width: 100%;     
+    }
+
+    .container {
+        box-shadow: 0 1px 5px rgba($color: #000000, $alpha: .25);
+        border-radius: 10px;
         width: 100%;
-        .numbers{
+        max-width: 65%;
+        padding: 0 5%;
+        
+        @media screen and (max-width: 850px) {
+            max-width: 100%;
+        }
+    
+        .head {
+            .display {
+                border: solid #999 1px;
+                border-radius: 5px;
+                height: 50px;
+                font-size: 2em;
+                margin: 4% 0 20px;
+                padding: 0 5px;
+                background-color: #fff;
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+            }
+            @media screen and (max-width: 700px) {
+                font-size: 12px;
+                .display { margin: 4% 0 0; }
+            }
+        }
+    
+        .body{
             display: flex;
-            width: 50%;
+            justify-content: space-between;
+            margin: 0 0 5%;
+            width: 100%;
+            
+            .numbers{
+                display: flex;
+                width: 50%;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 1px;
+    
+                div {
+                    width: 30.33%;
+                    border: solid #999 1px;
+                    padding: 1em;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    background-color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    &:hover {
+                        background-color: #000;
+                        color: #fff;
+                    }
+                }
+            }
+            .operators{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                width: 40%;
+                gap: 5px;
+    
+                div {
+                    border: solid #999 1px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    background-color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+    
+                    &.long {
+                        grid-column: 2 / 3;
+                        grid-row: 2 / 4;
+                    }
+                    
+                    &:hover {
+                        background-color: #000;
+                        color: #fff;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 700px) {
+                margin: 0 0 5%;
+                padding: 10px 0;
+
+                .numbers {
+                    div {
+                        margin-bottom: .2em;
+                    }
+                }
+                .operators {
+                    width: 40%;
+                    gap: 2%;
+                    
+                    div {
+                        width:100%;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    .logger {
+        background-color: rgba(255, 255, 255, 0.35);
+        color: black;
+        width: 35%;
+        max-width: 100%;
+        padding: 1em 2em;
+        height: 80vh;
+        overflow-y: scroll;
+        border-radius: 10px;
+        box-shadow: 0 1px 5px rgba($color: #000000, $alpha: .25);
+
+        @media screen and (max-width: 1000px) {
+            padding: 1em;
+        }
+    
+        h2 {
+            text-align: center;
+            font-weight: 400;
+            color: #000000e8;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    
+        .log {
+            border: solid 1px #0000003c;
+            background-color: #ffffff;
+            border-radius: 5px;
+            font-size: 18px;
+            width: 100%;
+            max-width: 100%;
+            padding: 1em;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+    
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(255, 201, 83);
+            }
+    
+           &:first-of-type {
+                background-color: rgb(255, 201, 83);
+            }
+            &:last-of-type { 
+                margin-bottom: 0; 
+            }
+
+            
+
+        }
+
+        @media screen and (max-width: 850px) {
+            height: auto;
+            width: 100%;
+            display: flex;
             flex-wrap: wrap;
-            gap: 1px;
+            justify-content: center;
+            gap: 2%;
 
-            div {
-                width: 30.33%;
-                border: solid #999 1px;
-                padding: 1em;
-                border-radius: 5px;
-                cursor: pointer;
-                background-color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                
-                &:hover {
-                    background-color: #000;
-                    color: #fff;
-                }
+            h2 { width: 100%; }
+            .log {
+                max-width: 45%;
             }
-        }
-        .operators{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            width: 40%;
-            gap: 5px;
 
-            div {
-                border: solid #999 1px;
-                border-radius: 5px;
-                cursor: pointer;
-                background-color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                
-
-                &.long {
-                    grid-column: 2 / 3;
-                    grid-row: 2 / 4;
-                }
-                
-                &:hover {
-                    background-color: #000;
-                    color: #fff;
-                }
-            }
-        }
-    }
-}
-
-.logger {
-    position: fixed;
-    bottom: 0;
-    right: 10%;
-    background-color: rgba(255, 255, 255, 0.35);
-    color: black;
-    width: 20%;
-    padding: 1em 2em;
-    height: 100vh;
-    overflow-y: scroll;
-
-    h2 {
-        text-align: center;
-        font-weight: 400;
-        color: #000000e8;
-        margin-bottom: 5px;
-    }
-
-    .log {
-        border: solid 1px #0000003c;
-        background-color: #ffffff;
-        border-radius: 5px;
-        font-size: 18px;
-        width: 100%;
-        padding: 1em;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 5px;
-
-        &:hover {
-            cursor: pointer;
-            background-color: rgb(255, 201, 83);
         }
 
-       &:first-of-type {
-            background-color: rgb(255, 201, 83);
-        }
-        &:last-of-type { 
-            margin-bottom: 0; 
+        @media screen and (max-width: 700px) {
+            font-size: 12px;
         }
     }
 }
