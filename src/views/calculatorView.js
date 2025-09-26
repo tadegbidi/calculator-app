@@ -1,5 +1,5 @@
 class CalculatorView {
-	_parentElement = document.querySelector('main');
+	_parentElement = document.querySelector('#app');
 
 	start() {
 		const markup = `

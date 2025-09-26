@@ -1,6 +1,6 @@
 
 class LoggerView {
-	_parentElement = document.querySelector('main');
+	_parentElement = document.querySelector('#app');
 	_markup = `
             <div class="logger">
             <h2>Activities</h2>

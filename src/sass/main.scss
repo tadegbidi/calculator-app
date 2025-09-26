@@ -7,13 +7,13 @@ body {
     margin: 0;
 }
 
-#app {
+main {
         @media screen and (max-width: 700px) {
             padding: 5%;
         }
 }
 
-main {
+#app {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
