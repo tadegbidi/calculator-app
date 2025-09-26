@@ -2,12 +2,12 @@ import * as model from './model.js';
 import calculatorView from './views/calculatorView.js';
 import loggerView from './views/loggerView.js';
 
-let displayer;
+let displayerData;
 
 const clear = function () {
 	model.initialState();
-	displayer = 0;
-	return displayer;
+	displayerData = 0;
+	return displayerData;
 };
 
 const setNumbers = function (num) {
@@ -21,24 +21,24 @@ const setNumbers = function (num) {
 		: (model.state.settings.currentInput += num);
 
 	// return what should be displayed
-	displayer = `${model.state.settings.previousInput} ${model.state.settings.currentOperation} ${model.state.settings.currentInput}`;
-	return displayer;
+	displayerData = `${model.state.settings.previousInput} ${model.state.settings.currentOperation} ${model.state.settings.currentInput}`;
+	return displayerData;
 };
 
 const setOperation = function (operation) {
 	if (model.state.settings.currentInput === '') return;
 
 	if (model.state.settings.previousInput !== '') {
-		displayer = calculate();
+		displayerData = calculate();
 	}
 
 	if (operation !== '=') {
 		model.state.settings.previousInput = model.state.settings.currentInput;
 		model.state.settings.currentInput = '';
 		model.state.settings.currentOperation = operation;
-		displayer = `${model.state.settings.previousInput} ${model.state.settings.currentOperation}`;
+		displayerData = `${model.state.settings.previousInput} ${model.state.settings.currentOperation}`;
 	}
-	return displayer;
+	return displayerData;
 };
 
 const saveOperations = function (x, y, operation, result) {
