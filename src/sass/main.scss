@@ -55,7 +55,7 @@ main {
         border-radius: 10px;
         width: 100%;
         max-width: 65%;
-        padding: 0 5%;
+        padding: 0 30px;
         
         @media screen and (max-width: 850px) {
             max-width: 100%;
@@ -64,7 +64,7 @@ main {
         .head {
             .display {
                 border: solid #999 1px;
-                border-radius: 5px;
+                border-radius: 10px;
                 height: 50px;
                 font-size: 2em;
                 margin: 4% 0 20px;
@@ -97,7 +97,7 @@ main {
                     width: 30.33%;
                     border: solid #999 1px;
                     padding: 1em;
-                    border-radius: 5px;
+                    border-radius: 10px;
                     cursor: pointer;
                     background-color: white;
                     display: flex;
@@ -118,7 +118,7 @@ main {
     
                 div {
                     border: solid #999 1px;
-                    border-radius: 5px;
+                    border-radius: 10px;
                     cursor: pointer;
                     background-color: white;
                     display: flex;
@@ -186,7 +186,7 @@ main {
         .log {
             border: solid 1px #0000003c;
             background-color: #ffffff;
-            border-radius: 5px;
+            border-radius: 10px;
             font-size: 18px;
             width: 100%;
             max-width: 100%;
